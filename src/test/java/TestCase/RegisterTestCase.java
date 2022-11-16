@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.time.Duration;
 
 import org.json.JSONObject;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import Base.BaseTest;
@@ -26,11 +27,11 @@ public class RegisterTestCase extends BaseTest {
 	@Test(priority=1)
 	public void testExistingInputFields() throws Exception{
 		testData = js.json("testData/Register.json");
-		homePage = new HomePage(driver);
+		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 		
 		homePage.clickRegisterBtn();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
-		regPage = new RegisterPage(driver);
+		regPage = PageFactory.initElements(driver, RegisterPage.class);
 		regPage.enterUsername(testData.getJSONObject("ExistingUser").getString("username")).
 				enterFirstname(testData.getJSONObject("ExistingUser").getString("firstname")).
 				enterLastname(testData.getJSONObject("ExistingUser").getString("lastname")).
@@ -48,10 +49,10 @@ public class RegisterTestCase extends BaseTest {
 	@Test(priority=2)
 	public void newUserRegisterTest() throws Exception {
 		testData = js.json("testData/Register.json");
-		homePage = new HomePage(driver);
+		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 		homePage.clickRegisterBtn();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
-		regPage = new RegisterPage(driver);
+		regPage = PageFactory.initElements(driver, RegisterPage.class);
 		String username = regPage.randomUsername();
 		regPage.enterUsername(username).
 				enterFirstname(testData.getJSONObject("NewUser").getString("firstname")).

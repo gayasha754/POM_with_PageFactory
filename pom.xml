@@ -42,7 +42,6 @@
 		    <version>2.13.4.2</version>
 		</dependency>
 	
-	
 		  <dependency>
 	       <groupId>org.slf4j</groupId>
 	       <artifactId>slf4j-api</artifactId>
@@ -59,9 +58,8 @@
 		    <groupId>com.beust</groupId>
 		    <artifactId>jcommander</artifactId>
 		    <version>1.81</version>
-		    <scope>test</scope>
+		    <scope>compile</scope>
 		</dependency>
-	
 		
 
 
